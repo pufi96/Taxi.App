@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Taxi.App.Views.ShiftPage"
+             xmlns:local="clr-namespace:Taxi.App.ViewModels"
+             Title="Shift">
+    <ContentPage.BindingContext>
+        <local:ShiftViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <Grid RowSpacing="10" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <!-- Add more RowDefinitions as needed -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- First Name -->
+                <Label Grid.Row="0" Grid.Column="0" Text="First name" VerticalOptions="Center" />
+                <Entry Grid.Row="0" Grid.Column="1" Placeholder="First name" Text="{Binding FirstName}" />
+
+                <!-- Last Name -->
+                <Label Grid.Row="1" Grid.Column="0" Text="Last name" VerticalOptions="Center" />
+                <Entry Grid.Row="1" Grid.Column="1" Placeholder="Last name" Text="{Binding LastName}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Select car for shift" IsVisible="{Binding IsStart}" VerticalOptions="Center" />
+                <Picker Grid.Row="2" Grid.Column="1" 
+                        IsVisible="{Binding IsStart}"
+                        Title="Select a car"
+                        ItemsSource="{Binding CarsFilter}"
+                        ItemDisplayBinding="{Binding Registration}"
+                        SelectedItem="{Binding SelectedCar}"
+                        HorizontalOptions="FillAndExpand" />
+
+                <!-- Mileage Start -->
+                <Label Grid.Row="3" Grid.Column="0" Text="Mileage start" IsVisible="{Binding IsStart}" VerticalOptions="Center" />
+                <Entry Grid.Row="3" Grid.Column="1" Placeholder="Mileage start" Keyboard="Numeric" Text="{Binding MileageStart}" IsVisible="{Binding IsStart}" />
+
+                <!-- Mileage End -->
+                <Label Grid.Row="4" Grid.Column="0" Text="Mileage finish" IsVisible="{Binding IsEnd}" VerticalOptions="Center" />
+                <Entry Grid.Row="4" Grid.Column="1" Placeholder="Mileage finish" Keyboard="Numeric" Text="{Binding MileageEnd}" IsVisible="{Binding IsEnd}" />
+
+                <!-- Expenses -->
+                <Label Grid.Row="5" Grid.Column="0" Text="Expenses" IsVisible="{Binding IsEnd}" VerticalOptions="Center" />
+                <Entry Grid.Row="5" Grid.Column="1" Placeholder="Expenses" Keyboard="Numeric" Text="{Binding Expenses}" IsVisible="{Binding IsEnd}" />
+
+                <!-- Description -->
+                <Label Grid.Row="6" Grid.Column="0" Text="Description" IsVisible="{Binding IsEnd}" VerticalOptions="Center" />
+                <Entry Grid.Row="6" Grid.Column="1" Placeholder="Description" Text="{Binding Description}" IsVisible="{Binding IsEnd}" />
+            </Grid>
+
+            <!-- Conditional Image based on a flag and if car is not null -->
+            <Image IsVisible="{Binding IsEndAndCarNotNull}" Source="{Binding CarImageSource}" />
+
+            <Label Text="{Binding Message}" IsVisible="{Binding IsMessageVisible}" />
+            <!--<Button Text="Submit" Command="{Binding SubmitCommand}" />-->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

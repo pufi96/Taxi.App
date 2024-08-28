@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Taxi.App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Taxi.App.Views"
+    xmlns:local="clr-namespace:Taxi.App"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+    Title="Taxi.App">
+
+    <!--<Shell>
+        --><!--<ShellContent Route="dogs" />--><!--
+    </Shell>-->
+    <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate views:Login}"
+            Route="MainPage" />
+    
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="False">
+        <ShellContent
+                    Title="Home"
+                    ContentTemplate="{DataTemplate local:MainPage}"
+                    Route="MainPage" />
+
+        <ShellContent Title="Start"
+                          ContentTemplate="{DataTemplate views:StartEndShift}" />
+
+        <ShellContent Title="Shift"
+                          ContentTemplate="{DataTemplate views:ShiftPage}" />
+        <!--<Tab Title="Domestic"
+             Icon="paw.png">
+            <ShellContent Title="Cats"
+                          Icon="cat.png"
+                          ContentTemplate="{DataTemplate views:Shift}" />
+            <ShellContent Title="Dogs"
+                          Icon="dog.png"
+                          ContentTemplate="{DataTemplate views:DogsPage}" />
+        </Tab>
+        <ShellContent Title="Monkeys"
+                      Icon="monkey.png"
+                      ContentTemplate="{DataTemplate views:MonkeysPage}" />
+        <ShellContent Title="Elephants"
+                      Icon="elephant.png"
+                      ContentTemplate="{DataTemplate views:ElephantsPage}" />
+        <ShellContent Title="Bears"
+                      Icon="bear.png"
+                      ContentTemplate="{DataTemplate views:BearsPage}" />-->
+        
+        
+    </FlyoutItem>
+
+    <!--<ShellContent Title="About"
+          Icon="info.png"
+          ContentTemplate="{DataTemplate views:AboutPage}" />-->
+
+</Shell>
